@@ -77,7 +77,7 @@ Basic Summary Statistics for quantitative variables are shown below:
 | Hillshade\_3pm (0 to 255 index)                         | 142.53  | 38.27              |
 | Horizontal\_Distance\_To\_Fire\_Points (0 to 255 index) | 1980.29 | 1324.19            |
 
-Scope:
+### Scope:
 
 The scope of this assignment is to apply Multi-Layered Perceptron (MLP),
 a deep learning model, to this classification problem and eventually
@@ -87,7 +87,7 @@ auto-encoder) are to be employed on this dataset, and differences among
 these models are evaluated in terms of their performances and accuracies
 obtained on Train sets and Test Sets.
 
-Data Preprocessing:
+### Data Preprocessing:
 
 There are a total of 581,012 observations in this dataset. Due to a
 large variance of instances among different classes, under-sampling and
@@ -107,7 +107,7 @@ function.
 | 7     | 20,510            | 20,510                                  |
 | Total | 581,012           | 143,570                                 |
 
-Model Building and Model Evaluation:
+### Model Building and Model Evaluation:
 
 The data set is first randomly split into Train and Test sets of sizes
 80% and 20% of the whole dataset respectively. After splitting, the
@@ -117,7 +117,7 @@ output layer with 7 perceptrons. ADAMS optimizer was used here for all
 MLP models for backpropagation and Google Colab was used to write and
 run the code.
 
-Simple MLP:
+### Simple MLP:
 
 Assumptions:
 
@@ -137,16 +137,16 @@ sets. These losses attained at each epoch are Average Cross Entropies
 (AVCREs). See the plot below for AVCRE vs. Epochs for a Train set and
 Test set.
 
-![Chart Description automatically generated](media/image1.png)
+![Chart Description automatically generated](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture1.png)
 
 From the figure above, we observe that the losses for train and test
 sets fall steeply from 59 and 12 respectively, after two Epochs and
 reach a plateau. The attained losses, which are the AVCREs, were
-transformed into probabilities (\(P = \ e^{- AVCRE})\) and plotted
-against Epochs below.\(\)
+transformed into probabilities (P = e <sup>- AVCRE</sup>) and plotted
+against Epochs below.
 
 ![Chart, line chart Description automatically
-generated](media/image2.png)
+generated](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture2.png)
 
 At the end of the last Epoch, the weights and thresholds were fixed and
 MLP was applied, and losses were computed. AVCREs on each class is
@@ -167,7 +167,7 @@ From the table above, we observed that the losses obtained were very low
 indicating that the model was predicting the classes (forest cover
 types) well.
 
-MLP<sub>low</sub>:
+### MLP<sub>low</sub>:
 
 The entire dataset has four attributes with zero values for all
 instances, which were dropped as part of data preprocessing before the
@@ -177,12 +177,12 @@ based on 90% Principal of Explained Variance (PEV). PEVs vs index of the
 eigenvalues obtained from the correlation matrix were plotted below.
 
 ![Chart, line chart Description automatically
-generated](media/image3.png)
+generated](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture3.png)
 
 From the plot above, the number of attributes obtained for 90% PEV is
 36.
 
-\[h_{\text{low}} = 36\]
+h<sub>low</sub> = 36
 
 The hidden layer in our MLP was now changed to contain only 36
 perceptrons and the automatic learning using this new MLP<sub>low</sub>
@@ -198,7 +198,7 @@ The AVCREs obtained using the MLP<sub>low</sub> model are plotted
 against Epochs as shown below.
 
 ![Chart, histogram Description automatically
-generated](media/image4.png)
+generated](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture4.png)
 
 StabTrain: The epoch of stabilization for the above curve would be
 22.
@@ -214,7 +214,7 @@ minimum on the safe zone and then increases steadily.
 The value of mSTOP was fixed as 25 and then the model was relaunched
 with the number of epochs set to mSTOP.
 
-![](media/image5.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture5.png)
 
 Confusion matrix for the train set
 
@@ -236,7 +236,7 @@ as class 3, and 1.9% as class 6.
 | 6         | 84%                                      |
 | 7         | 85%                                      |
 
-![](media/image6.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture6.png)
 
 Confusion matrix for test set
 
@@ -261,49 +261,48 @@ the observations as class 6.
 
 Computation time for this model: 197.95 sec
 
-*MLP<sub>high</sub>:*
+### MLP<sub>high</sub>:
 
-*For this model, initially,* PCA analysis *was performed separately for
-each true class of their respective* *instances. Note that before PCA
+For this model, initially, PCA analysis *was performed separately for
+each true class of their respective instances. Note that before PCA
 analysis was performed on all seven classes of instances, the attributes
 with all zero entries are dropped and then standardized. PEV vs
 principal component curves for all seven classes were plotted below and
-‘h’ values were computed from them.*
+‘h’ values were computed from them.
 
-![](media/image7.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture7.png)
 
-Class 1: 90% PEV = 22, so \(h_{1} = 22\)
+Class 1: 90% PEV = 22, so h<sub>1</sub> = 22
 
-![](media/image8.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture8.png)
 
-Class 2: 90% PEV = 25, so \(h_{2} = 25\)
+Class 2: 90% PEV = 25, so h<sub>2</sub> = 25
 
-![](media/image9.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture9.png)
 
-Class 3: 90% PEV = 19, so \(h_{3} = 19\)
+Class 3: 90% PEV = 19, so h<sub>3</sub> = 19
 
-![](media/image10.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture10.png)
 
-Class 4: 90% PEV = 15, so \(h_{4} = 15\)
+Class 4: 90% PEV = 15, so h<sub>4</sub> = 15
 
-![](media/image11.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture11.png)
 
-Class 5: 90% PEV = 22, so \(h_{5} = 22\)
+Class 5: 90% PEV = 22, so h<sub>5</sub> = 22
 
-![Chart, line chart Description automatically
-generated](media/image12.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture12.png)
 
-Class 6: 90% PEV = 22, so \(h_{6} = 22\)
+Class 6: 90% PEV = 22, so h<sub>6</sub> = 22
 
-![](media/image13.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture13.png)
 
-Class 7: 90% PEV = 23, so \(h_{7} = 23\)
+Class 7: 90% PEV = 23, so h<sub>7</sub> = 23
 
-\[h_{\text{high}}\  = \ h_{1}\  + \ h_{2}\  + \ h_{3}\  + \ h_{4}\  + \ h_{5}\  + \ h_{6}\  + \ h_{7}\  = \ 148\]
+h<sub>high</sub> = h<sub>1</sub> + h<sub>2</sub> + h<sub>3</sub> + h<sub>4</sub> + h<sub>5</sub> + h<sub>6</sub> + h<sub>7</sub> = 148
 
-*Using the* \(h_{\text{high}}\) value obtained above, the new model
-\(\text{ML}P_{\text{high}}\) with 148 neutrons in the hidden layer was
-launched similar to Question 2 with the same batch size and Epochs.
+Using the h<sub>high</sub> value obtained above, the new model
+MLP<sub>hgh</sub> with 148 neutrons in the hidden layer was
+launched similar to previous model with the same batch size and Epochs.
 
 Assumptions:
 
@@ -313,18 +312,18 @@ Assumptions:
 
 The AVCREs were now computed and plotted against Epochs as shown below.
 
-![](media/image14.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture14.png)
 
 From the plot above, the losses start from lower values than Simple MLP
-and \(\text{ML}P_{\text{low}}\) for train and test sets at 8 and 4
+and MLP<sub>low</sub> for train and test sets at 8 and 4
 respectively and drop down steeply until they reach a plateau at
 approximately 20 Epochs.
 
-![](media/image15.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture15.png)
 
 Confusion matrix for the train set
 
-From the confusion matrix above, this \(\text{ML}P_{\text{high}}\) model
+From the confusion matrix above, this MLP<sub>high</sub> model
 predicted classes for all instances in the train set with high
 accuracies ranging from 85% to 95%. This model predicted better results
 compared to the previous model.
@@ -339,12 +338,12 @@ compared to the previous model.
 | 6         | 92                                       |
 | 7         | 86                                       |
 
-![](media/image16.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture16.png)
 
 Confusion matrix for test set
 
 A similar trend as that of the train set was observed for the test set.
-From the confusion matrix above, the \(\text{ML}P_{\text{high}}\) was
+From the confusion matrix above, the MLP<sub>high</sub> was
 able to predict classes for all instances in the test set with high
 accuracy ranging from 84% to 94%.
 
@@ -362,9 +361,9 @@ Computation Time for this model: 262.6 sec
 
 Comparing the confusion matrices for train sets and test sets obtained
 the best number of perceptrons to be used in our model would be
-\(h_{\text{high}} = 148\)
+h<sub>high</sub> = 148
 
-MLP<sub>long</sub>:
+### MLP<sub>long</sub>:
 
 Step 1: Auto-Encoder Construction
 
@@ -373,7 +372,7 @@ by using the weights and the biases from the MLP<sub>high</sub> model
 hidden layer, and the resultant data is computed to construct an
 auto-encoder algorithm.
 
-\[Z_{n} = RELU(X_{n}*W + B)\]
+_Z<sub>n</sub> = RELU(X<sub>n</sub> * W + B)_
 
 Where X<sub>n</sub> = Vector of Case ‘n’ from the dataset,
 
@@ -387,7 +386,7 @@ size of the hidden layer to construct an autoencoder model and we found
 out the initial 23 attributes of the Z<sub>n</sub> would give the 95%
 PEV of the same dataset.
 
-![](media/image17.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture17.png)
 
 An auto-encoder model is constructed by 3 layers, the 1<sup>st</sup>
 layer is used as an input layer with Z<sub>n</sub> dimensions, the
@@ -397,8 +396,7 @@ data, which is encoded and eventually, this data is decoded by the
 3<sup>rd</sup> layer with the same Z<sub>n</sub> dimensions. The
 following is the sample structure of the auto-encoder model.
 
-![Deep Autoencoders For Collaborative Filtering | Towards Data
-Science](media/image18.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture18.png)
 
 Assumptions:
 
@@ -423,15 +421,13 @@ These are also plotted against Epochs as shown below.
 
 The computational time for this model was 324.51 sec.
 
-![Graphical user interface, text, application, Word Description
-automatically generated](media/image19.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture19.png)
 
-![Graphical user interface, text, application, Word Description
-automatically generated](media/image20.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture20.png)
 
 The above plots show the MSE curves of the training and testing
 datasets, after epoch 2, both the training and testing MSE curves are
-staggered, this narrows the best epoch to stop the autoencoder m\* = 2.
+staggered, this narrows the best epoch to stop the autoencoder m<sup>*</sup> = 2.
 
 The corresponding weights and thresholds for this epoch are now fixed
 and utilized in the next step.
@@ -441,13 +437,13 @@ Step 2: Developing MLP with Auto-Encoder
 The weights and thresholds were obtained for the first half of the
 L<sub>1</sub> to L<sub>2</sub> autoencoder. Z<sub>n</sub> computed from
 X<sub>n</sub> using the weights and thresholds of
-\(\text{ML}P_{\text{high}}\) are inputs to L<sub>1</sub>.
+MLP<sub>high</sub> are inputs to L<sub>1</sub>.
 
 The weights and thresholds of autoencoder L<sub>1</sub> to L<sub>2</sub>
 transform Z<sub>n</sub> into a new input vector K<sub>n</sub> on
 L<sub>2</sub>.
 
-\[K_{n} = RELU(Z_{n}*W + B)\]
+_K<sub>n</sub> = RELU(Z<sub>n</sub> * W + B)_
 
 Assumptions:
 
@@ -459,29 +455,27 @@ The batch size was reduced to 50 and Epochs were increased to 100 to
 optimize accuracies. K<sub>n</sub> was sent as an input to layer
 L<sub>2</sub> with the number of perceptrons equal to dim
 (K<sub>n</sub>). The MLP was then launched with only 1 hidden layer
-H<sub>3</sub> (\(h_{\text{long}}\) = computed using PCA analysis on
+H<sub>3</sub> (h<sub>long</sub> = computed using PCA analysis on
 K<sub>n</sub> as shown below) and probabilities were predicted. The
 train and test AVCREs were also computed at each Epoch and plotted
 against Epochs as shown below.
 
-![Chart Description automatically generated](media/image21.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture21.png)
 
-95% PEV = 9, so \(h_{\text{long}}\) = 9
+95% PEV = 9, so h<sub>long</sub> = 9
 
-![Chart, line chart Description automatically
-generated](media/image22.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture22.png)
 
 The AVCREs for the train set computed from this model fall gradually and
 reach a plateau whereas the AVCREs for the test set follow a similar
 trend in the beginning but start oscillating vigorously after 20 Epochs
 till the end.
 
-![Graphical user interface, application, Teams Description automatically
-generated](media/image23.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture23.png)
 
 Confusion matrix for the train set
 
-From the confusion matrix above, the \(\text{ML}P_{\text{long}}\)
+From the confusion matrix above, the MLP<sub>long</sub>
 predicted classes on the train set with accuracies ranging from 54% to
 86%. Class 1 was most misclassified with an accuracy of only 54% while
 classes 4 and 5 were classified with the highest accuracies of 84% and
@@ -498,12 +492,11 @@ accuracies compared to previous models.
 | 6         | 70                                       |
 | 7         | 75                                       |
 
-![Graphical user interface, application, Teams Description automatically
-generated](media/image24.png)
+![](https://github.com/datta-mnv/ForestCovertypeNN/blob/main/images/Picture24.png)
 
 Confusion matrix for test set
 
-The \(\text{ML}P_{\text{long}}\) also predicted a similar level of
+The MLP<sub>long</sub> also predicted a similar level of
 accuracies on the test set ranging from 54 to 86%. Class ‘1’ was most
 misclassified while classes 4 and 5 were least misclassified. For class
 ‘1’, 33% of the observations were misclassified as class 7, and 13%
@@ -521,31 +514,24 @@ were misclassified as class 2.
 
 Computation time for this model: 816.82 sec
 
-*Question 6:*
 
-Comparison of performances among different MLP models:
+#### Comparison of performances among different MLP models:
 
 <table>
 <thead>
 <tr class="header">
 <th></th>
-<th><br /><span class="math display">ML<em>P</em><sub>low</sub></span><br /></th>
-<th><br /><span class="math display">ML<em>P</em><sub>high</sub></span><br /></th>
-<th><br /><span class="math display">ML<em>P</em><sub>long</sub></span><br /></th>
-<th></th>
-<th></th>
-<th></th>
+<th colspan="2"><br />ML<em>P</em><sub>low</sub></span><br /></th>
+<th colspan="2"><br />ML<em>P</em><sub>high</sub></span><br /></th>
+<th colspan="2"><br />ML<em>P</em><sub>long</sub></span><br /></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Epochs, Batch size</td>
-<td>50, 100</td>
-<td>50, 100</td>
-<td>100, 50</td>
-<td></td>
-<td></td>
-<td></td>
+<th colspan="2">50, 100</th>
+<th colspan="2">50, 100</th>
+<th colspan="2">100, 50</th>
 </tr>
 <tr class="even">
 <td>Classes</td>
@@ -622,12 +608,9 @@ Comparison of performances among different MLP models:
 <tr class="even">
 <td><p>Computational Time</p>
 <p>(In Seconds)</p></td>
-<td>262.61</td>
-<td>324.51</td>
-<td>816.82</td>
-<td></td>
-<td></td>
-<td></td>
+<th colspan="2">262.61</th>
+<th colspan="2">324.51</th>
+<th colspan="2">816.82</th>
 </tr>
 </tbody>
 </table>
@@ -641,7 +624,7 @@ when compared to MLPlow for the same batch size 100 and number of epochs
 MLP<sub>long</sub> took over 13 minutes for a batch size of 50 and a
 number of epochs of 100.
 
-References:
+### References:
 
 1.  Blackard, Jock A. and Denis J. Dean. 2000. "Comparative Accuracies
     of Artificial Neural Networks and Discriminant Analysis in
